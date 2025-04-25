@@ -1,6 +1,9 @@
 import express from "express"
 import dotenv from "dotenv"
 import mongoose from "mongoose"
+import cors from "cors"
+import cookieParser from "cookie-parser"
+import authRoute from "./routes/auth.js"
 
 const app = express()
 // Load the environemnt variables
@@ -23,6 +26,19 @@ mongoose.connection.on("disconnected", () => {
 mongoose.connection.on("connected", () => {
     console.log("mongoDB connected")
 })
+
+app.use(cors())
+app.use(cookieParser())
+app.use(express.json())
+
+app.use("/api/auth", authRoute)
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+    const statusCode = err.status || 500;
+    const message = err.message || 'Something went wrong';
+    res.status(statusCode).json({ message });
+});
 
 app.listen(8800,() => {
     connect()
