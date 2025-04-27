@@ -3,7 +3,10 @@ import dotenv from "dotenv"
 import mongoose from "mongoose"
 import cors from "cors"
 import cookieParser from "cookie-parser"
-import authRoute from "./routes/auth.js"
+import authRoute from "./routes/authRoutes.js"
+import foodItemRoutes from './routes/foodItemRoutes.js'; // Import food item routes
+import orderRoutes from './routes/orderRoutes.js';
+import userRoutes from './routes/userRoutes.js'
 
 const app = express()
 // Load the environemnt variables
@@ -32,6 +35,10 @@ app.use(cookieParser())
 app.use(express.json())
 
 app.use("/api/auth", authRoute)
+app.use('/api/fooditems', foodItemRoutes); // Use the food item routes
+app.use('/api/orders', orderRoutes); // Register the order routes
+app.use('/api/users', userRoutes)
+
 
 // Error handling middleware
 app.use((err, req, res, next) => {
