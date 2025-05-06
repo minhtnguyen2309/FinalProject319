@@ -1,0 +1,84 @@
+/* Footer Styling */
+.custom-footer {
+  background: linear-gradient(to right, #f44336, #fbbf24);
+  color: white;
+  padding: 3rem 1rem;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.custom-footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.custom-footer h5 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Footer links */
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0 auto 2rem;
+  list-style: none;
+  max-width: 700px;
+}
+
+.footer-links li {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.footer-links li a {
+  color: white;
+  text-decoration: none;
+  padding-left: 10px;
+  transition: color 0.3s ease;
+}
+
+.footer-links li a:hover {
+  color: #fffacd; /* light yellow on hover */
+}
+
+.footer-links .icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* Footer bottom section */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  padding-top: 1.5rem;
+  margin-top: 2rem;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.75);
+  transition: color 0.3s ease;
+}
+
+.footer-bottom p:hover {
+  color: #fffacd;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .footer-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .footer-links li {
+    justify-content: center;
+  }
+}
