@@ -1,2 +1,5 @@
 node_modules/
 .env
+seedFoodItems.js
+seedOrders.js
+seedCart.js

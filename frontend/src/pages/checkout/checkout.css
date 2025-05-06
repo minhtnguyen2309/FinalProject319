@@ -1,0 +1,103 @@
+.checkout-container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .checkout-container h1 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+    color: #333;
+  }
+  
+  .checkout-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .checkout-form h2 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: #222;
+    font-weight: 600;
+  }
+  
+  .checkout-form input,
+  .checkout-form select {
+    padding: 10px 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: border 0.3s ease;
+  }
+  
+  .checkout-form input:focus,
+  .checkout-form select:focus {
+    border-color: #3eaf7c;
+  }
+  
+  .StripeElement {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #f9f9f9;
+  }
+  
+  .checkout-form button {
+    padding: 14px;
+    background-color: #3eaf7c;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .checkout-form button:hover {
+    background-color: #369b6b;
+  }
+  
+  .checkout-form button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .checkout-form h3 {
+    font-size: 1.1rem;
+    text-align: right;
+    color: #333;
+    margin-top: 10px;
+  }
+  
+  .checkout-message {
+    margin-top: 20px;
+    font-size: 1rem;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  .checkout-message::before {
+    content: 'ℹ️ ';
+  }
+  
+  .checkout-message:empty {
+    display: none;
+  }
+  
+  .test-info {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #888;
+    text-align: center;
+  }
+  
