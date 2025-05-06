@@ -1,10 +1,10 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const orderSchema = new mongoose.Schema({
   user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
+    type: mongoose.Schema.Types.ObjectId, // Reference to the User model
+    ref: 'User', // This links the order to a User document
+    required: true // Each order must be linked to a user
   },
   foodItems: [{
     foodItem: {
@@ -34,9 +34,8 @@ const orderSchema = new mongoose.Schema({
   },
   paymentMethod: {
     type: String,
-    enum: ['Credit Card', 'PayPal'],
     required: true
   }
 }, { timestamps: true });
 
-module.exports = mongoose.model('Order', orderSchema);
+export default mongoose.model('Order', orderSchema);

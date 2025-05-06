@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const foodItemSchema = new mongoose.Schema({
   name: {
@@ -11,8 +11,16 @@ const foodItemSchema = new mongoose.Schema({
     required: true
   },
   ingredients: [String],
-  category: String, // For example: "Appetizer", "Main Course"
-  imageUrl: String // URL for the image of the dish
+  category: {
+    type: String,
+    enum: ['Appetizer', 'Main Course', 'Side Dish', 'Dessert', 'Beverage'], // Only these values are allowed
+    required: true
+  },
+  imageUrl: String, // URL for the image of the dish
+  isFeatured: {
+    type: Boolean,
+    default: false // Set default to false so that it's not featured by default
+  }
 }, { timestamps: true });
 
-module.exports = mongoose.model('FoodItem', foodItemSchema);
+export default mongoose.model('FoodItem', foodItemSchema);
