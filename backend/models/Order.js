@@ -34,7 +34,6 @@ const orderSchema = new mongoose.Schema({
   },
   paymentMethod: {
     type: String,
-    enum: ['Credit Card', 'PayPal'],
     required: true
   }
 }, { timestamps: true });

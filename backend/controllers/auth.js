@@ -41,7 +41,6 @@ export const register = async (req, res, next) => {
 };
 
 
-// Login user
 export const login = async (req, res, next) => {
   const { email, password } = req.body;
 
@@ -68,20 +67,29 @@ export const login = async (req, res, next) => {
     // Set JWT token in a cookie (HTTP-only and Secure)
     res.cookie('jwt', token, {
       httpOnly: true, // Makes the cookie HTTP-only (not accessible by JavaScript)
-      secure: process.env.NODE_ENV === 'production', // Only use secure cookies in production (when HTTPS is enabled)
+      secure: false, // Only use secure cookies in production (when HTTPS is enabled)
       maxAge: 3600000, // 1 hour (same as token expiration)
       sameSite: 'Strict', // Prevents cross-site request forgery (CSRF)
     });
+    // Cannot use "Cookies.get('jwt')" because when setting "httpOnly: true", javascript can not access cookies
 
-    // Send response with success message
+    // Send response with success message and user data including firstName, lastName
     res.status(200).json({
       message: 'Login successful',
+      user: {
+        firstName: user.firstName, // Include the firstName
+        lastName: user.lastName,   // Include the lastName
+        userId: user._id,
+        email: user.email,
+      },
     });
+
   } catch (err) {
     console.error(err);
     next(createError(500, 'Server error')); // Using createError function
   }
 };
+
 
 
 export const logout = (req, res) => {
@@ -94,6 +102,43 @@ export const logout = (req, res) => {
 
   res.status(200).json({ message: 'Logged out successfully' });
 };
+
+// Verify if the user is authenticated
+export const verifyToken = async (req, res, next) => {
+  const token = req.cookies.jwt; // Get JWT from cookies
+
+  if (!token) {
+    return next(createError(401, "You are not authenticated"));
+  }
+
+  try {
+    // Verify the token using JWT secret
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+
+    // Find the user associated with the token
+    const user = await User.findById(decodedToken.userId);
+    if (!user) {
+      return next(createError(401, "User not found"));
+    }
+
+    // If token is valid, send back user data
+    res.status(200).json({
+      message: "Token is valid",
+      user: {
+        userId: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email
+      },
+    });
+  } catch (err) {
+    console.error(err);
+    return next(createError(401, "Token is invalid or expired"));
+  }
+};
+
+
+
 
 
 
