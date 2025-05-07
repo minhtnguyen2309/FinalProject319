@@ -14,6 +14,7 @@ import Checkout from './pages/checkout/Checkout.jsx'; // make sure this is corre
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import CheckoutWrapper from './pages/checkoutWrapper/CheckoutWrapper.jsx';
+import Signup from './pages/signUp/Signup.jsx';
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
@@ -29,6 +30,7 @@ const App = () => {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/foodItems" element={<Menu />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Signup />} />
             <Route
               path="/myCart"
               element={
@@ -45,6 +47,7 @@ const App = () => {
                 </ProtectedRoute>
               }
             />
+
           </Routes>
 
           <Footer />
