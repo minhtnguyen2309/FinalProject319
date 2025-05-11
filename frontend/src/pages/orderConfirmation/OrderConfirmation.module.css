@@ -1,0 +1,95 @@
+.confirmationContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  min-height: 70vh;
+}
+
+.confirmationCard {
+  background: white;
+  border-radius: 10px;
+  padding: 40px;
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.confirmationCard h1 {
+  color: #2ecc71;
+  margin-bottom: 20px;
+}
+
+.confirmationCard p {
+  font-size: 16px;
+  color: #555;
+}
+
+.confirmationActions {
+  margin-top: 30px;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.confirmationActions button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #1e90ff;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.confirmationActions button:hover {
+  background-color: #0d74d1;
+}
+
+/* Summary styles */
+.orderSummary {
+  text-align: left;
+  margin-top: 30px;
+}
+
+.orderSummary h2 {
+  margin-bottom: 12px;
+  font-size: 20px;
+  color: #333;
+}
+
+.orderSummary ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 10px;
+}
+
+.orderSummary li {
+  margin-bottom: 6px;
+  font-size: 16px;
+  color: #444;
+}
+
+.orderTotal {
+  margin-top: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #1e90ff;
+}
+
+.orderAddress {
+  margin-top: 20px;
+}
+
+.orderAddress h3 {
+  margin-bottom: 4px;
+  font-size: 16px;
+  color: #333;
+}
+
+.orderAddress p {
+  margin: 0;
+  font-size: 15px;
+  color: #555;
+}
