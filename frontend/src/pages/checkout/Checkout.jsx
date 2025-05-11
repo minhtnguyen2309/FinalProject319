@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import './checkout.css';
 
 const Checkout = ({ clientSecret }) => {
-  const { cart, getTotal, clearCart} = useCart();
+  const { cart, getTotal, clearCart } = useCart();
   const { userId } = useAuth();
   const stripe = useStripe();
   const elements = useElements();
@@ -62,11 +62,16 @@ const Checkout = ({ clientSecret }) => {
 
         await axios.post('http://localhost:8800/api/orders', orderPayload);
 
-        // ✅ Clear the cart
+        // Create enriched order summary for confirmation page
+        const orderSummary = {
+          foodItems: cart.foodItems,       // contains full info
+          deliveryAddress: address,
+          total: getTotal(),
+        };
+
         await clearCart();
 
-        setMessage('✅ Order placed successfully!');
-        setTimeout(() => navigate('/'), 2500);
+        navigate('/order-confirmation', { state: { order: orderSummary } });
       }
     } catch (err) {
       console.error(err);
@@ -79,10 +84,34 @@ const Checkout = ({ clientSecret }) => {
   return (
     <form className="checkout-form" onSubmit={handleSubmit}>
       <h2>Delivery Address</h2>
-      <input name="street" placeholder="Street" value={address.street} onChange={handleAddressChange} required />
-      <input name="city" placeholder="City" value={address.city} onChange={handleAddressChange} required />
-      <input name="state" placeholder="State" value={address.state} onChange={handleAddressChange} required />
-      <input name="postalCode" placeholder="Postal Code" value={address.postalCode} onChange={handleAddressChange} required />
+      <input
+        name="street"
+        placeholder="Street"
+        value={address.street}
+        onChange={handleAddressChange}
+        required
+      />
+      <input
+        name="city"
+        placeholder="City"
+        value={address.city}
+        onChange={handleAddressChange}
+        required
+      />
+      <input
+        name="state"
+        placeholder="State"
+        value={address.state}
+        onChange={handleAddressChange}
+        required
+      />
+      <input
+        name="postalCode"
+        placeholder="Postal Code"
+        value={address.postalCode}
+        onChange={handleAddressChange}
+        required
+      />
 
       <h2>Payment Method</h2>
       <select value={paymentMethod} onChange={(e) => setPaymentMethod(e.target.value)} required>

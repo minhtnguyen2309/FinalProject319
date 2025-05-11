@@ -1,0 +1,178 @@
+.foodItemPage {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.foodItemDetails {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 40px;
+  align-items: flex-start;
+}
+
+.foodItemImg {
+  width: 300px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.foodItemInfo {
+  flex: 1;
+}
+
+.foodItemInfo h1 {
+  margin-bottom: 10px;
+  font-size: 28px;
+  color: #333;
+}
+
+.foodItemInfo p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.featuredBadge {
+  display: inline-block;
+  background-color: gold;
+  color: black;
+  padding: 4px 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.reviewsSection {
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+}
+
+.reviewsSection h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.reviewInput {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.reviewInput textarea {
+  width: 100%;
+  min-height: 80px;
+  resize: vertical;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.reviewInput select {
+  width: 120px;
+  padding: 6px;
+  font-size: 14px;
+  border-radius: 6px;
+}
+
+.reviewInput button {
+  align-self: flex-start;
+  padding: 8px 16px;
+  background-color: #1e90ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.reviewInput button:hover {
+  background-color: #0d74d1;
+}
+
+.reviewItem {
+  border-bottom: 1px solid #eee;
+  padding: 12px 0;
+}
+
+.reviewItem p {
+  margin: 4px 0;
+  color: #444;
+}
+
+.reviewItem small {
+  color: #999;
+}
+
+.reviewList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.reviewItem {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.reviewHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.reviewerName {
+  font-weight: bold;
+  color: #333;
+}
+
+.reviewRating {
+  background-color: #ffd700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #000;
+}
+
+.reviewComment {
+  font-style: italic;
+  color: #555;
+  margin-bottom: 6px;
+}
+
+.reviewTimestamp {
+  color: #999;
+  font-size: 12px;
+}
+
+.addToCartBtn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #e63946; /* red shade */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.addToCartBtn:hover {
+  background-color: #c62828; /* darker red */
+  transform: translateY(-2px);
+}
+
+
+
