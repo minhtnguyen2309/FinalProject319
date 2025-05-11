@@ -3,6 +3,12 @@
   margin: 40px auto;
   padding: 20px;
   font-family: 'Segoe UI', sans-serif;
+
+  /* Footer stick support */
+  min-height: calc(100vh - 580px); /* Adjust height based on Navbar + Footer */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .cart-title {
@@ -107,7 +113,7 @@
 
 .cart-total {
   text-align: right;
-  margin-top: 30px;
+  margin-top: auto; /* Pushes it to bottom if little content */
   padding-top: 20px;
   border-top: 1px solid #ddd;
   font-size: 1.1rem;
@@ -124,18 +130,6 @@
   display: flex;
   justify-content: space-between;
   font-weight: 500;
-}
-
-.empty-message {
-  text-align: center;
-  font-size: 1.2rem;
-  color: #888;
-}
-
-.loading {
-  text-align: center;
-  padding: 40px;
-  font-size: 1.5rem;
 }
 
 .cart-total h3.total-line {
@@ -164,3 +158,16 @@
   transform: translateY(-2px);
 }
 
+.empty-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #888;
+  margin-top: 50px; /* 👈 push it down a bit for balance */
+}
+
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  font-size: 1.5rem;
+}

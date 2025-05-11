@@ -10,44 +10,51 @@ import { AuthProvider } from './context/AuthContext.js';
 import Login from './pages/login/Login.jsx';
 import MyCart from './pages/myCart/myCart.jsx';
 import ProtectedRoute from './components/protectedRoute/ProtectedRoute.jsx';
-import Checkout from './pages/checkout/Checkout.jsx'; // make sure this is correct
-import { loadStripe } from '@stripe/stripe-js';
-import { Elements } from '@stripe/react-stripe-js';
 import CheckoutWrapper from './pages/checkoutWrapper/CheckoutWrapper.jsx';
-
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
+import Signup from './pages/signUp/Signup.jsx';
+import FoodItem from './pages/foodItem/FoodItem.jsx';
+import OrderConfirmation from './pages/orderConfirmation/OrderConfirmation.jsx';
+import Aboutus from './pages/aboutus/Aboutus.jsx';
 
 const App = () => {
   return (
     <Router>
       <AuthProvider>
         <CartProvider>
-          <Navbar />
+          <div className="app-wrapper">
+            <Navbar />
+            {/* Main content wrapper */}
+            <div className="main-content">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/foodItems" element={<Menu />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Signup />} />
+                <Route path="/foodItems/:id" element={<FoodItem />} />
+                <Route
+                  path="/myCart"
+                  element={
+                    <ProtectedRoute>
+                      <MyCart />
+                    </ProtectedRoute>
+                  }
+                  />
+                <Route
+                  path="/checkout"
+                  element={
+                    <ProtectedRoute>
+                      <CheckoutWrapper />
+                    </ProtectedRoute>
+                  }
+                  />
+                <Route path="/order-confirmation" element={<OrderConfirmation />} />
+                <Route path="/aboutus" element={<Aboutus />} />
+              </Routes>
+            </div>
 
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/foodItems" element={<Menu />} />
-            <Route path="/login" element={<Login />} />
-            <Route
-              path="/myCart"
-              element={
-                <ProtectedRoute>
-                  <MyCart />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/checkout"
-              element={
-                <ProtectedRoute>
-                  <CheckoutWrapper />
-                </ProtectedRoute>
-              }
-            />
-          </Routes>
-
-          <Footer />
+            <Footer />
+          </div>
         </CartProvider>
       </AuthProvider>
     </Router>

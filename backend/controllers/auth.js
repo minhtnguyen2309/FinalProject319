@@ -1,16 +1,16 @@
 import bcrypt from 'bcryptjs';
 import User from "../models/User.js"
+import Cart from '../models/Cart.js';
 import { createError } from '../utils/error.js'; // Import the createError function
 import jwt from "jsonwebtoken"
 
-// Register a new user (without generating JWT token)
+// Register a new user and create a cart for the user
 export const register = async (req, res, next) => {
   const { firstName, lastName, email, password } = req.body;
 
   try {
     // Check if user already exists
     const userExists = await User.findOne({ email });
-    // Check if user already exists or not
     if (userExists) {
       return next(createError(400, 'User already exists')); // Using createError function
     }
@@ -28,10 +28,18 @@ export const register = async (req, res, next) => {
     });
 
     await newUser.save();
-    
-    // Send response indicating user has been created successfully
+
+    // Create a cart for the new user with empty foodItems
+    const newCart = new Cart({
+      user: newUser._id, // Associate the cart with the new user's ID
+      foodItems: [], // Initialize foodItems as empty array (or null if desired)
+    });
+
+    await newCart.save(); // Save the cart
+
+    // Send response indicating user and cart have been created successfully
     res.status(201).json({
-      message: 'User created successfully'
+      message: 'User and cart created successfully'
     });
 
   } catch (err) {
@@ -39,7 +47,6 @@ export const register = async (req, res, next) => {
     next(createError(500, 'Server error')); // Using createError function
   }
 };
-
 
 export const login = async (req, res, next) => {
   const { email, password } = req.body;
