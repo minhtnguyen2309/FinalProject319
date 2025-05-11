@@ -9,6 +9,7 @@ import orderRoutes from './routes/orderRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import cartRoutes from './routes/cartRoutes.js';
 import paymentRoutes from './routes/paymentRoutes.js'
+import reviewRoutes from './routes/reviewRoutes.js'
 
 const app = express()
 // Load the environemnt variables
@@ -46,6 +47,7 @@ app.use('/api/orders', orderRoutes); // Register the order routes
 app.use('/api/users', userRoutes)
 app.use('/api/cart', cartRoutes)
 app.use('/api/payments', paymentRoutes)
+app.use('/api/reviews', reviewRoutes)
 
 
 // Error handling middleware
