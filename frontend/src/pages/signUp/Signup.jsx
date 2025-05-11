@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
-import './signup.css';
+import './signup.css'; // Keep this import the same
 
 const Signup = () => {
   const [firstName, setFirstName] = useState('');
@@ -11,7 +11,7 @@ const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
-  
+
   const navigate = useNavigate(); // Initialize navigate hook
 
   const handleSubmit = async (e) => {
@@ -49,11 +49,11 @@ const Signup = () => {
     <div className="signup-container">
       <div className="signup-box">
         <h2>Sign Up</h2>
-        {error && <p className="error">{error}</p>}
-        {successMessage && <p className="success">{successMessage}</p>}
+        {error && <p className="signup-error">{error}</p>}
+        {successMessage && <p className="signup-success">{successMessage}</p>}
 
         <form onSubmit={handleSubmit}>
-          <div className="input-group">
+          <div className="signup-input-group">
             <label>First Name:</label>
             <input
               type="text"
@@ -63,7 +63,7 @@ const Signup = () => {
             />
           </div>
 
-          <div className="input-group">
+          <div className="signup-input-group">
             <label>Last Name:</label>
             <input
               type="text"
@@ -73,7 +73,7 @@ const Signup = () => {
             />
           </div>
 
-          <div className="input-group">
+          <div className="signup-input-group">
             <label>Email:</label>
             <input
               type="email"
@@ -83,7 +83,7 @@ const Signup = () => {
             />
           </div>
 
-          <div className="input-group">
+          <div className="signup-input-group">
             <label>Password:</label>
             <input
               type="password"
@@ -93,7 +93,7 @@ const Signup = () => {
             />
           </div>
 
-          <div className="input-group">
+          <div className="signup-input-group">
             <label>Confirm Password:</label>
             <input
               type="password"
@@ -103,10 +103,10 @@ const Signup = () => {
             />
           </div>
 
-          <button type="submit" className="submit-btn">Sign Up</button>
+          <button type="submit" className="signup-submit-btn">Sign Up</button>
         </form>
 
-        <div className="login-link">
+        <div className="signup-login-link">
           <p>Already have an account? <a href="/login">Login</a></p>
         </div>
       </div>
